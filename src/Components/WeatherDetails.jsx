@@ -13,7 +13,7 @@ const WeatherDetails = ({ location, current }) => {
 
         <p>{location?.country}</p>
       </div>
-      <div className='flex flex-col justify-center items-center mt-10'>
+      <div className='flex flex-col justify-center items-center mt-9'>
         <img className='w-16' src={current?.condition.icon} alt={current?.condition.text} />
         <p>{current?.maxtemp_c}°C</p>
         <p>{current?.condition.text}</p>

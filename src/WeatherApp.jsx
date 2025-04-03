@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import WeatherDetails from './Components/WeatherDetails';
 import DayButton from './Components/DayButton';
+import HourlyWeather from './Components/HourlyWeather';
 
 
 const WeatherApp = () => {
@@ -14,7 +15,7 @@ const WeatherApp = () => {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    'https://api.weatherapi.com/v1/forecast.json?q=Tashkent&days=3&key=ea6329817e554d2ebc860547250204'
+                    'https://api.weatherapi.com/v1/forecast.json?q=&days=3&key=ea6329817e554d2ebc860547250204'
                 );
                 setWeather(response.data);
             } catch (error) {
@@ -39,18 +40,28 @@ const WeatherApp = () => {
                     />
                 </>
             )}
-
-<div className="flex space-x-2">
-    {weather?.forecast?.forecastday?.map((day, index) => (
-        <DayButton
-            key={day.date_epoch}
-            day={day}
-            index={index}  // ✅ Pass index
-            selectedDay={selectedDay}  // ✅ Pass selectedDay
-            setSelectedDay={setSelectedDay}  // ✅ Pass function directly
-        />
-    ))}
-</div>
+            <div className="flex space-x-2">
+                {weather?.forecast?.forecastday?.map((day, index) => (
+                    <DayButton
+                        key={day.date_epoch}
+                        day={day}
+                        index={index}
+                        selectedDay={selectedDay}
+                        setSelectedDay={setSelectedDay}
+                    />
+                ))};
+            </div>
+            <div className="w-full max-w-md overflow-x-auto whitespace-nowrap flex space-x-2 p-2 border rounded-lg">
+                {weather?.forecast?.forecastday?.[selectedDay]?.hour?.map((hour, index) => (
+                    <HourlyWeather
+                        key={hour.time_epoch}
+                        hour={hour}
+                        index={index}
+                        selectedHour={selectedHour}
+                        setSelectedHour={setSelectedHour}
+                    />
+                ))}
+            </div>
 
         </div>
     );

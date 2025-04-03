@@ -8,7 +8,7 @@ const DayButton = ({ day, index, selectedDay, setSelectedDay }) => {
         weekday: 'short',
     });
     return (
-        <div className='flex mt-5'>
+        <div className='flex mt-7'>
             <button
                 className={`dailyBtn ${index === selectedDay ? "activeBtn" : ""}`}
                 onClick={() => setSelectedDay(index)}  

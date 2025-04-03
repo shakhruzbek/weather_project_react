@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-function HourlyWeather() {
+const HourlyWeather = ({ hour, index, selectedHour, setSelectedHour }) => {
+  const formattedTime = hour.time.split(' ')[1];
   return (
-    <div>HourlyWeather</div>
-  )
-}
+    <div>
+      <button
+        className={`dailyBtn min-w-[80px] px-4 py-2 ${hour.time === selectedHour ? "activeBtn" : ""}`}
+        onClick={() => setSelectedHour(hour.time)}
+      >
+        {formattedTime}
+      </button>
+    </div>
+  );
+};
 
-export default HourlyWeather
+export default HourlyWeather;
