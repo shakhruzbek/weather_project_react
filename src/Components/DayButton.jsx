@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+// import './WeatherApp.css';
 
-function DayButton() {
-  return (
-    <button>DAY</button>
-  )
-}
+const DayButton = ({ day, index, selectedDay, setSelectedDay }) => {
+    const weekDay = new Date(day.date).toLocaleDateString('en-US', {
+        weekday: 'short',
+    });
 
-export default DayButton
+    return (
+        <div className='flex mt-5'>
+            <button
+                className={`dailyBtn ${index === selectedDay ? "activeBtn" : ""}`}
+                onClick={() => setSelectedDay(index)}  
+            >
+                {weekDay}
+            </button>
+        </div>
+    );
+};
+
+export default DayButton;

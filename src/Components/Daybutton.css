@@ -1,0 +1,12 @@
+.dailyBtn {
+    width: 60px;
+    height: 30px;
+    padding: 0px 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.activeBtn{
+    background-color: rgb(96, 230, 136);
+    color: black;
+}
