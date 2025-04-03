@@ -2,7 +2,7 @@ import React from 'react'
 
 function DayButton() {
   return (
-    <div>DayButton</div>
+    <button>DAY</button>
   )
 }
 

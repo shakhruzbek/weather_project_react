@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import WeatherDetails from './Components/WeatherDetails'
 import "./WeatherApp.css"
+import DayButton from './Components/DayButton'
 
 
 const WeatherApp = () => {
@@ -31,13 +32,18 @@ const WeatherApp = () => {
         <div className='container'>
             {isLoading && <h1 className='load'>Loading...</h1>}
             {(weather && !isLoading) && (
-                <WeatherDetails
-                    location={weather?.location}
-                    current={weather?.forecast.forecastday[0].day}
-                />
+                <>
+                    <WeatherDetails
+                        location={weather?.location}
+                        current={weather?.forecast.forecastday[0].day}
+                    />
+                    {weather.forecast.forecastday.map((day) => {
+                        return <DayButton />
+                    })}
+                </>
             )}
         </div>
-    )
+    );
 }
 
 export default WeatherApp
